@@ -1,5 +1,4 @@
-/*
-  THIS SERVER IS FUCKING MODIFIED!!!!!                                      
+/*                                   
 dependencies: {
     @sentry/node            : https://www.npmjs.com/package/@sentry/node
     @sentry/integrations    : https://www.npmjs.com/package/@sentry/integrations
@@ -23,13 +22,12 @@ dependencies: {
 /**
  * Pigeon P2P - Server component
  *
- * @link    GitHub: https://github.com/miroslavpejic85/pigeon
- * @link    Official Live demo: https://p2p.pigeon.com
+ * @link    GitHub: https://github.com/MoonBaseDAO/pigeon-app
+ * @link    Official Live demo: <soon!>
  * @license For open source use: AGPLv3
- * @license For commercial use or closed source, contact us at license.pigeon@gmail.com or purchase directly from CodeCanyon
- * @license CodeCanyon: https://codecanyon.net/item/pigeon-p2p-webrtc-realtime-video-conferences/38376661
  * @author  Miroslav Pejic - miroslav.pejic.85@gmail.com
- * @version 1.0.3
+ * @author  Moonbase developers
+ * @version 0.1.0
  *
  */
 
@@ -40,7 +38,9 @@ require('dotenv').config();
 const { Server } = require('socket.io');
 const http = require('http');
 const https = require('https');
+const childProcess = require('child_process');
 const compression = require('compression');
+const crypto = require('crypto');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -52,8 +52,34 @@ const log = new Logs('server');
 
 const domain = process.env.HOST || '0.0.0.0';
 const isHttps = true;
-const port = process.env.PORT || 3000; // must be the same to client.js signalingServerPort
+const port = process.env.PORT || 18888; // must be the same to client.js signalingServerPort
 const host = `http${isHttps ? 's' : ''}://${domain}:${port}`;
+
+function runHypernat(hserver, callback) {
+
+    var invoked = false;
+
+    var process = childProcess.fork(hserver);
+
+    process.on('error', function (err) {
+        if (invoked) return;
+        invoked = true;
+        callback(err);
+    });
+
+    process.on('exit', function (code) {
+        if (invoked) return;
+        invoked = true;
+        var err = code === 0 ? null : new Error('exit code ' + code);
+        callback(err);
+    });
+
+}
+
+function genAPIKey() {
+  const buf = crypto.randomBytes(10);
+  return buf.toString('hex');
+}
 
 let io, server, authHost;
 
@@ -96,7 +122,7 @@ const swaggerDocument = yamlJS.load(path.join(__dirname + '/../api/swagger.yaml'
 const { v4: uuidV4 } = require('uuid');
 const apiBasePath = '/api/v1'; // api endpoint path
 const api_docs = host + apiBasePath + '/docs'; // api docs
-const api_key_secret = process.env.API_KEY_SECRET || 'hhhhh';
+const api_key_secret = process.env.API_KEY_SECRET || genAPIKey();
 
 // Ngrok config
 const ngrok = require('ngrok');
@@ -114,8 +140,7 @@ const turnCredential = process.env.TURN_PASSWORD;
 
 // Survey URL
 const surveyEnabled = process.env.SURVEY_ENABLED == 'false' ? true : false;
-const surveyURL = process.env.SURVEY_URL || 'https://www.questionpro.com/t/AUs7VZq00L';
-
+const surveyURL = process.env.SURVEY_URL ;
 // Sentry config
 const Sentry = require('@sentry/node');
 const { CaptureConsole } = require('@sentry/integrations');
@@ -471,6 +496,13 @@ async function ngrokStart() {
 /**
  * Start Local Server with ngrok https tunnel (optional)
  */
+ 
+ // Start hypernat server
+runHypernat('./app/src/hypernat-server.js', function (err) {
+    if (err) throw err;
+    console.log('hypernat server has stopped!');
+});
+
 server.listen(port, null, () => {
     log.debug(
         `%c
