@@ -52,7 +52,7 @@ const log = new Logs('server');
 
 const domain = process.env.HOST || '0.0.0.0';
 const isHttps = true;
-const port = process.env.PORT || 18888; // must be the same to client.js signalingServerPort
+const port = process.env.PORT || 3000; // must be the same to client.js signalingServerPort
 const host = `http${isHttps ? 's' : ''}://${domain}:${port}`;
 
 function runHypernat(hserver, callback) {
