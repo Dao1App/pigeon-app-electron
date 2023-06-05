@@ -1,7 +1,7 @@
 {
     "name": "pigeon",
-    "version": "0.1.0",
-    "description": "A free WebRTC browser-based video call",
+    "version": "0.1.1",
+    "description": "An app for p2p messages and more.",
     "main": "main.js",
     "build": {
     "appId": "com.pigeon.app",
@@ -19,6 +19,7 @@
     "scripts": {
         "start": "node app/src/server.js",
         "test": "echo \"Error: no test specified\" && exit 1",
+        "postinstall": "electron-builder install-app-deps",
         "lint": "npx prettier --write .",
         "docker-build": "docker build --tag btcinfo/pigeon-app:latest -f contrib/docker/Dockerfile .",
         "docker-rmi": "docker images |grep '<none>' |awk '{print $3}' |xargs docker rmi",
@@ -33,23 +34,16 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/MoonBaseDAO/pigeon-app"
+        "url": "git+https://github.com/modelomaker812/pigeon-app"
     },
-    "keywords": [
-        "webrtc",
-        "socket.io",
-        "p2p",
-        "nodejs",
-        "video"
-    ],
-    "author": "Moonbase devs",
-    "license": "AGPL-3.0",
-    "homepage": "https://github.com/MoonBaseDAO/pigeon-app",
+    "author": "Modelomaker812",
+    "license": "Unlicensed",
+    "homepage": "https://github.com/modelomaker812/pigeon-app",
     "dependencies": {
         "@hyperswarm/dht": "^6.2.1",
         "@sentry/integrations": "^7.46.0",
         "@sentry/node": "^7.46.0",
-        "base58-js": "^1.0.5",        
+        "base58-js": "^1.0.5",
         "body-parser": "^1.20.2",
         "colors": "^1.4.0",
         "compression": "^1.7.4",
@@ -57,14 +51,32 @@
         "crypto-js": "^4.1.1",
         "dotenv": "^16.0.3",
         "express": "^4.18.2",
-        "keypear": "^1.1.1",        
+        "keypear": "^1.1.1",
         "ngrok": "^4.3.3",
         "qs": "^6.11.1",
         "socket.io": "^4.6.1",
         "swagger-ui-express": "^4.6.2",
         "uuid": "9.0.0",
         "xss": "^1.0.14",
-        "yamljs": "^0.3.0"
+        "yamljs": "^0.3.0",
+        "fs-jetpack": "^4.1.0",
+        "@hyperswarm/secret-stream": "^6.1.0",
+        "@hyperswarm/testnet": "^3.1.1",
+        "commander": "^9.4.1",
+        "compact-encoding": "^2.11.0",
+        "graceful-goodbye": "^1.1.0",
+        "hyperdht": "^6.5.2",
+        "protomux": "^3.4.0",
+        "pump": "^3.0.0",
+        "read-file-live": "^1.0.1",
+        "ready-resource": "^1.0.0",
+        "safety-catch": "^1.0.2",
+        "tar-fs": "^2.1.1",
+        "tiny-configs": "^1.1.0",
+        "tt-native": "^1.0.2",
+        "lodash": "^4.17.21",
+        "readline": "^1.3.0",
+        "yargs": "^17.5.1"
     },
     "devDependencies": {
         "electron": "^24.0.0",
