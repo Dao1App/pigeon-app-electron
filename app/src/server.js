@@ -181,14 +181,18 @@ const dir = {
 const views = {
     about: path.join(__dirname, '../../', 'public/views/about.html'),
     client: path.join(__dirname, '../../', 'public/views/client.html'),
+    callback: path.join(__dirname, '../../', 'public/views/callback.html'),
     landing: path.join(__dirname, '../../', 'public/views/landing.html'),
     login: path.join(__dirname, '../../', 'public/views/login.html'),
+    logout: path.join(__dirname, '../../', 'public/views/logout.html'),
+    mlogin: path.join(__dirname, '../../', 'public/views/mlogin.html'),
     newCall: path.join(__dirname, '../../', 'public/views/newcall.html'),
     notFound: path.join(__dirname, '../../', 'public/views/404.html'),
     permission: path.join(__dirname, '../../', 'public/views/permission.html'),
     privacy: path.join(__dirname, '../../', 'public/views/privacy.html'),
     stunTurn: path.join(__dirname, '../../', 'public/views/testStunTurn.html'),
     settings: path.join(__dirname, '../../', 'public/views/settings.html'),
+    terms: path.join(__dirname, '../../', 'public/views/terms.html'),
 
 };
 
@@ -262,6 +266,22 @@ app.get(['/about'], (req, res) => {
     res.sendFile(views.about);
 });
 
+
+// pigeon logout
+app.get(['/logout'], (req, res) => {
+    res.sendFile(views.logout);
+});
+
+// pigeon magic callback
+app.get(['/callback'], (req, res) => {
+    res.sendFile(views.callback);
+});
+
+// pigeon m login
+app.get(['/mlogin'], (req, res) => {
+    res.sendFile(views.mlogin);
+});
+
 // pigeon settings page
 app.get(['/settings'], (req, res) => {
     res.sendFile(views.settings);
@@ -290,6 +310,11 @@ app.get(['/permission'], (req, res) => {
 // privacy policy
 app.get(['/privacy'], (req, res) => {
     res.sendFile(views.privacy);
+});
+
+// terms of service
+app.get(['/terms'], (req, res) => {
+    res.sendFile(views.terms);
 });
 
 // test Stun and Turn connections
@@ -523,7 +548,7 @@ server.listen(port, null, () => {
   ,~
  ('v)__
 (/ (\`\`/
- \__>' pigeon-v0.1.0
+ \__>' pig.eon-v0.1.1
   ^^
 
 	`,
