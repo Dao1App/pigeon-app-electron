@@ -69,7 +69,15 @@
     <h1 class="page-title">Account</h1>
     <div class="settings-section">
       <h2 class="settings-title">General Information</h2>
-        <div class="non-active-form">
+
+    <div>
+    <label for="fileLocationInput">Enter file location:</label>
+    <input type="text" id="fileLocationInput" value="/home/roy/.pigeon/peer">
+    <button id="generateKeyButton">Generate Key</button>
+  </div><br>
+<div id="publicKeyElement" style="padding: 10px; background-color: #333333; border: 1px solid #ddd; border-radius: 4px; font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; color: #fff;"></div>
+      
+	<div class="non-active-form">
           <p>username</p><i class="fas fa-pen"></i>
         </div>
     <div>
@@ -130,5 +138,6 @@
 		document.querySelector("body").classList.toggle("active");
 	})
   </script>
+  <script defer src="../js/keygen.js">
 </body>
 </html>
