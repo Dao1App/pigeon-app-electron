@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pigeon - Account Settings</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/settings.css">
+<link rel="stylesheet" href="../css/new-landing.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="section">
+            <div class="top_navbar">
+                <div class="hamburger">
+                    <a href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="profile">
+                <img src="images/pigeonlogo.png" alt="logo_picture">
+                <h3>PIGEON</h3>
+            </div>
+            <ul>
+                <li>
+                    <a href="#" class="active">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="views/newcall.html">
+                        <span class="icon"><i class="fas fa-desktop"></i></span>
+                        <span class="item">Stream</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-user-friends"></i></span>
+                        <span class="item">Contacts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-user-shield"></i></span>
+                        <span class="item">Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-cog"></i></span>
+                        <span class="item">Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/mlogin">
+                        <span class="icon"><i class="fas fa-user-plus"></i></span>
+                        <span class="item">Sign-up / Sign-in</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+           <div class="settings-page">
+  <div class="settings-container">
+    <h1 class="page-title">Account</h1>
+    <div class="settings-section">
+      <h2 class="settings-title">General Information</h2>
+        <div class="non-active-form">
+          <p>username</p><i class="fas fa-pen"></i>
+        </div>
+    <div>
+      <div class="non-active-form">
+        <p class="capitalize">phone #</p><i class="fas fa-pen"></i>
+      </div>
+    </div>
+    <div>
+      <div class="non-active-form">
+        <p>user@gmail.com</p><i class="fas fa-pen"></i>
+      </div>
+    </div>
+  </div>
+<div class="settings-section">
+  <h2 class="settings-title">My profile</h2>
+  <form class="form my-form">
+    <div class="img-upload-container">
+      <label class="img-upload btn btn-bwm" style="background-image: url(&quot;/profile-placeholder.jpg&quot;);">
+        <input type="file" accept=".jpg, .png, .jpeg, .gif" value="">
+      </label>
+      <h4>Change Your Profile Picture</h4>
+      <div class="img-preview-container">
+        <div class="img-preview" style="background-image: url('http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png');">
+        </div>
+      </div>
+    </div>
+    <div class="form-submit">
+      <button class="btn button full" type="submit" disabled="">Save New Picture</button>
+    </div>
+  </form>
+</div>
+<div class="settings-section">
+  <h2 class="settings-title">Password</h2>
+  <form class="form my-form">
+    <div class="form-group">
+      <div class="input-group">
+        <input name="currentPassword" placeholder="Old Password" type="password" class="form-control" autocomplete="Old Password" value="">
+        <span class="focus-input"></span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <input name="password" placeholder="New Password" type="password" class="form-control" autocomplete="New Password" value="">
+        <span class="focus-input"></span>
+      </div>
+    </div>
+   <div class="form-submit right">
+     <button class="btn button full" type="submit" disabled="">Change Password</button>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+    </div>
+  <script>
+       var hamburger = document.querySelector(".hamburger");
+	hamburger.addEventListener("click", function(){
+		document.querySelector("body").classList.toggle("active");
+	})
+  </script>
+</body>
+</html>
