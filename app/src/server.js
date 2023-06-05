@@ -188,6 +188,8 @@ const views = {
     permission: path.join(__dirname, '../../', 'public/views/permission.html'),
     privacy: path.join(__dirname, '../../', 'public/views/privacy.html'),
     stunTurn: path.join(__dirname, '../../', 'public/views/testStunTurn.html'),
+    settings: path.join(__dirname, '../../', 'public/views/settings.html'),
+
 };
 
 let channels = {}; // collect channels
@@ -258,6 +260,11 @@ app.get(['/login'], (req, res) => {
 // pigeon about
 app.get(['/about'], (req, res) => {
     res.sendFile(views.about);
+});
+
+// pigeon settings page
+app.get(['/settings'], (req, res) => {
+    res.sendFile(views.settings);
 });
 
 // set new room name and join
