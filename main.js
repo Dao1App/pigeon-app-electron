@@ -1,9 +1,30 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 app.commandLine.appendSwitch('ignore-certificate-errors')
 app.commandLine.appendSwitch('allow-insecure-localhost', 'true')
 
 const server = require("./app/src/");
+const keygen = require('./keygen.js');
 
+const initIpc = () => {
+  ipcMain.on("need-app-path", (event, arg) => {
+    event.reply("app-path", app.getAppPath());
+  });
+  ipcMain.on("open-external-link", (event, href) => {
+    shell.openExternal(href);
+  });
+};
+
+app.on("ready", () => {
+  setApplicationMenu();
+  initIpc();
+ ipcMain.handle('generateKey', async (event, fileLocation) => {
+    try {
+      const publicKey = await keygen.cmd(fileLocation);
+      return publicKey;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  });
 
 let mainWindow;
 
