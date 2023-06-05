@@ -1,4 +1,4 @@
-# pigeon-app
+# pig.eon.app
 
 **P**2P 
 **I**nstant 
@@ -14,6 +14,6 @@
   ,~
  ('v)__
 (/ (\`\`/
- \__>' pigeon-v0.1.1
+ \__>' pig.eon-v0.1.1
   ^^
 </pre>
