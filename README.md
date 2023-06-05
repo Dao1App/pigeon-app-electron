@@ -1,9 +1,19 @@
 # pigeon-app
-**P**eer-2-Peer **I**nstant **G**roup **E**ncrypted **O**nline **N**etwork
+
+**P**2P 
+**I**nstant 
+**G**roups 
+
+&&
+
+**E**ncrypted 
+**O**nline 
+**N**etworks
+
 <pre>
   ,~
  ('v)__
 (/ (\`\`/
- \__>' pigeon-v0.1.0
+ \__>' pigeon-v0.1.1
   ^^
 </pre>
